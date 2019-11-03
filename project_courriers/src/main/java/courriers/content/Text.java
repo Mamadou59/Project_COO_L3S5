@@ -21,5 +21,7 @@ public class Text implements Content {
 		return text;
 	}
 	
-	
+	public String description() {
+		return new String("["+this.getText()+"]");
+	}
 }

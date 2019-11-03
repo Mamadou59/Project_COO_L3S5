@@ -22,9 +22,9 @@ public class InhabitantTest {
 	
 	@Before
 	public void init() throws NotEnoughMoneyException {
-		// create the sender with null for city and bankaccount
+		// create the sender with null for city and bank account
 		this.sender = new Inhabitant("Diallo",null,null);
-		// create the receiver with null for city and bankaccount
+		// create the receiver with null for city and bank account
 		this.receiver = new Inhabitant("Fungwa",null,null);
 		this.mockLetter = new MockLetter(null,this.sender,this.receiver);
 	}

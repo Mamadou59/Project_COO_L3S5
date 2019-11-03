@@ -7,7 +7,7 @@ import courriers.content.Text;
 import courriers.inhabitant.Inhabitant;
 
 /**
- * @author diallom
+ * @author diallo and fungwa
  *
  */
 public class AcknowledgementOfReceipt extends SimpleLetter {
@@ -19,6 +19,10 @@ public class AcknowledgementOfReceipt extends SimpleLetter {
 	@Override
 	public float cost() {
 		return 0.0F;
+	}
+	
+	public String description() {
+		return super.description() + " of acknowledgment of receipt ";
 	}
 
 }

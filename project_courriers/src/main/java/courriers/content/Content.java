@@ -4,9 +4,10 @@
 package courriers.content;
 
 /**
- * @author diallom
+ * @author diallo and fungwa
  *
  */
 public interface Content {
-
+	
+	public String description();
 }

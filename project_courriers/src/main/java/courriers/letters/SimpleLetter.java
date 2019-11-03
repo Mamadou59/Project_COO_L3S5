@@ -13,17 +13,23 @@ import courriers.inhabitant.Inhabitant;
  */
 public class SimpleLetter extends Letter<Text> {
 	
+	
+	
+	protected float COST = 0.5F;
+
+	
 	public SimpleLetter(Text content, Inhabitant sender, Inhabitant receiver) {
 		super(content,sender, receiver);
 	}
 	
 	@Override
 	public void action() {
-		
+		System.out.println(this.receivingDescription());
 	}
 
 	@Override
 	public float cost() {
-		return 0.5F;
+		return COST;
 	}
+	
 }

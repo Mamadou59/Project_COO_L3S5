@@ -12,7 +12,9 @@ import courriers.inhabitant.Inhabitant;
  *
  */
 public class RegisteredLetter extends DecoratorLetter {
-
+	
+	protected float OVERCOST = 15 /100;
+	
 	public RegisteredLetter(Letter<?> content, Inhabitant sender, Inhabitant receiver) {
 		super(content, sender, receiver);
 	}
@@ -20,12 +22,16 @@ public class RegisteredLetter extends DecoratorLetter {
 	@Override
 	public void action() throws NotEnoughMoneyException {
 		super.action();// to execute the initial action letter
-		this.getSender().sendLetter(new AcknowledgementOfReceipt(new Text("Votre lettre est bien reçu"),this.getSender(),this.getSender()));
+		this.getReceiver().sendLetter(new AcknowledgementOfReceipt(new Text("Votre lettre est bien reçu"),this.getReceiver(),this.getSender()));
 	}
 
 	@Override
 	public float cost() {
-		return this.getContent().cost() + this.getContent().cost()*15 /100;
+		return this.getContent().cost() + this.getContent().cost()*OVERCOST;
+	}
+	
+	public String description() {
+		return super.description() + " REGISTRED";
 	}
 
 }

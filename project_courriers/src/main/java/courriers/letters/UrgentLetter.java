@@ -3,6 +3,7 @@
  */
 package courriers.letters;
 
+import courriers.NotEnoughMoneyException;
 import courriers.inhabitant.Inhabitant;
 
 /**
@@ -21,8 +22,18 @@ public class UrgentLetter extends DecoratorLetter {
 	}
 	
 	@Override
+	public void action() throws NotEnoughMoneyException {
+		super.action();// to execute the initial action letter
+	}
+
+	
+	@Override
 	public float cost() {
 		return 2 * this.getContent().cost();
+	}
+	
+	public String description() {
+		return super.description() + " URGENT";
 	}
 
 }

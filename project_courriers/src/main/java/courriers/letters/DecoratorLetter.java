@@ -17,6 +17,12 @@ public abstract class DecoratorLetter extends Letter< Letter<?> > {
 	}
 	
 	public void action() throws NotEnoughMoneyException {
+		//Pour que le nom du decorateur soit cosidéré et non du decoré
+		this.getContent().letterName = this.letterName;
 		this.getContent().action();
+	}
+	
+	public String description() {
+		return this.getContent().description();
 	}
 }

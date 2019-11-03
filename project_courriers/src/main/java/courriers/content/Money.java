@@ -8,6 +8,7 @@ package courriers.content;
  *
  */
 public class Money implements Content {
+	
 	private float money;
 	
 	public Money(float money) {
@@ -21,5 +22,8 @@ public class Money implements Content {
 		return money;
 	}
 	
+	public String description() {
+		return new String("[value = "+this.getMoney()+" euros]");
+	}
 	
 }
