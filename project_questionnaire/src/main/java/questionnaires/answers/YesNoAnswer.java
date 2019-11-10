@@ -30,7 +30,7 @@ public class YesNoAnswer extends Answers<Boolean> {
 		
 		possibleAnswer.put("non",false);
 		possibleAnswer.put("faux",false);
-		possibleAnswer.put("flase",false);
+		possibleAnswer.put("false",false);
 		possibleAnswer.put("no",false);
 
 	}
