@@ -18,7 +18,7 @@ public class ChainContent implements Content {
 	private List<Inhabitant> beneficiaries;
 
 	/**
-	 * @param beneficies the beneficiaries
+	 * @param beneficiaries the beneficiaries
 	 */
 	public ChainContent(List<Inhabitant> beneficiaries) {
 		this.beneficiaries = new ArrayList<Inhabitant>(beneficiaries);
@@ -31,6 +31,10 @@ public class ChainContent implements Content {
 		return beneficiaries;
 	}
 	
+	/**
+	 * @param inhabitant the inhabitant to add on the chain of the letter
+	 * @return a new instance of the chain content
+	 */
 	public ChainContent withNewBeneficiary(Inhabitant inhabitant) {
 		// Create the new chain content
 		ChainContent newChainContent = new ChainContent(this.beneficiaries);
@@ -42,6 +46,9 @@ public class ChainContent implements Content {
 		return newChainContent;
 	}
 	
+	/**
+	 * @return the description of the chain content
+	 */
 	public String description() {
 		String s = new String("[ ");
 		for(Inhabitant i : this.getBeneficiaries()) {

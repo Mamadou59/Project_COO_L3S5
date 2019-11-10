@@ -44,13 +44,21 @@ public class Inhabitant {
 		return bankAccount;
 	}
 	
+	/**
+	 * @param letter the letter to send
+	 * @throws NotEnoughMoneyException when the inhabitant does'nt have a lot of money
+	 */
 	public void sendLetter(Letter<?> letter) throws NotEnoughMoneyException {
-		// debite the sender
+		// debit the sender
 		this.getBackAccount().debit(letter.totalMoneyToDebit());
 		//adding the letter in the city's mail box
 		this.city.addLetter(letter);
 		System.out.println(letter.sendingDescription());
 	}
+	/**
+	 * @param letter the letter to receive
+	 * @throws NotEnoughMoneyException when the inhabitant does'nt have a lot of money
+	 */
 	public void receiveLetter(Letter<?> letter) throws NotEnoughMoneyException  {
 		letter.action();
 	}

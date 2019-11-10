@@ -34,7 +34,7 @@ public class City {
 	
 	
 	/**
-	 * @return the name
+	 * @return the name of the city
 	 */
 	public String getName() {
 		return name;
@@ -43,7 +43,7 @@ public class City {
 
 
 	/**
-	 * @return the inhabitants
+	 * @return the List of inhabitants 
 	 */
 	public List<Inhabitant> getInhabitants() {
 		return inhabitants;
@@ -52,7 +52,7 @@ public class City {
 
 
 	/**
-	 * @return the mailBox
+	 * @return the city's mailBox 
 	 */
 	public List<Letter<?>> getMailBox() {
 		return mailBox;
@@ -61,7 +61,7 @@ public class City {
 
 
 	/**
-	 * @return the manBox
+	 * @return the city's manBox
 	 */
 	public List<Letter<?>> getManBox() {
 		return manBox;
@@ -69,24 +69,32 @@ public class City {
 
 
 
+	/**
+	 * @param letter the letter to add
+	 */
 	public void addLetter(Letter<?> letter) {
 		this.mailBox.add(letter);
 	}
 	
+	/**
+	 *  add the letters of the mailBox in the manBox and remove them from the mailBox 
+	 */
 	public void addLetterDistribute() {
 		this.manBox.addAll(this.mailBox);
 		this.mailBox.removeAll(manBox);
 	}
+	/**
+	 * add a inhabitant in the city
+	 * @param inhabitant the inhabitant to add
+	 */
 	public void addInhabitant(Inhabitant inhabitant) {
 		this.inhabitants.add(inhabitant);
 	}
 	
-	public Letter<?> distributeOneLetter() throws NotEnoughMoneyException{
-		Letter<?> l = this.manBox.get(0);
-		l.getReceiver().receiveLetter(l);
-		this.manBox.remove(0);
-		return l;
-	}
+	/**
+	 * distribute the letters of a city
+	 * @throws NotEnoughMoneyException when an inhabitant does'nt have a lot money 
+	 */
 	public void distributeLetters() throws NotEnoughMoneyException {
 		for(Letter<?> l : this.manBox) {
 			l.getReceiver().receiveLetter(l);
@@ -94,11 +102,18 @@ public class City {
 		manBox.clear();
 	}
 	
+	/**
+	 * @return a random inhabitant
+	 */
 	public Inhabitant randomInhabitant() {
 		int posAlea = ALEA.nextInt(this.inhabitants.size());
 		return this.inhabitants.get(posAlea);
 	}
 	
+	/**
+	 * @param name the name of an inhabitant
+	 * @return the new inhabitant
+	 */
 	public Inhabitant newInhabitant(String name) {
 		Inhabitant newInhabitant = new Inhabitant(name,this,new BankAccount());
 		this.inhabitants.add(newInhabitant);

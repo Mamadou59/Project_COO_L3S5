@@ -62,17 +62,29 @@ public abstract class Letter<T extends Content> implements Content {
 	public abstract void action() throws NotEnoughMoneyException;
 	public abstract float cost();
 	
+	/**
+	 * the description of letter
+	 */
 	public String description() {return this.letterName;}
 	
+	/**
+	 * @return the cost of a letter
+	 */
 	public float totalMoneyToDebit() {
 		return this.cost();
 	}
 	
 	
+	/**
+	 * @return the sending description of the letter
+	 */
 	public String sendingDescription() {
 		return new String(">>> "+this.getSender().getName()+ " send "+this.description()+ "  (cost : "+ this.cost()+") to "+this.getReceiver().getName());
 	}
 	
+	/**
+	 * @return the receiving  description of the letter
+	 */
 	public String receivingDescription() {
 		return new String("< "+this.description()+ " (cost : "+ this.cost()+") "+this.getContent().description()+" send by "+this.getSender().getName()+ " receive by "+this.getReceiver().getName());
 	}

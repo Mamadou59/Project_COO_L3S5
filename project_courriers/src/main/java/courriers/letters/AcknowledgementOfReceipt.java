@@ -16,11 +16,17 @@ public class AcknowledgementOfReceipt extends SimpleLetter {
 		super(content, sender, receiver);
 	}
 	
+	/**
+	 * return the cost of the letter
+	 */
 	@Override
 	public float cost() {
 		return 0.0F;
 	}
 	
+	/**
+	 * @return the description of the letter
+	 */
 	public String description() {
 		return super.description() + " of acknowledgment of receipt ";
 	}

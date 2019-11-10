@@ -21,17 +21,26 @@ public class UrgentLetter extends DecoratorLetter {
 		super(content, sender, receiver);
 	}
 	
+	/**
+	 * the action to do when the letter is receiving by the inhabitant
+	 */
 	@Override
 	public void action() throws NotEnoughMoneyException {
 		super.action();// to execute the initial action letter
 	}
 
 	
+	/**
+	 * @return the cost of the letter
+	 */
 	@Override
 	public float cost() {
 		return 2 * this.getContent().cost();
 	}
 	
+	/**
+	 * @return the description of the letter
+	 */
 	public String description() {
 		return super.description() + " URGENT";
 	}

@@ -19,24 +19,36 @@ public class BillOfExchangeLetter extends Letter<Money> {
 		super(content,sender, receiver);
 	}
 	
+	/**
+	 * the action to do when the letter is receiving by the inhabitant
+	 */
 	@Override
 	public void action() throws NotEnoughMoneyException{
 		//credit the receiver
 		this.getReceiver().getBackAccount().credit(this.getContent().getMoney());
 		System.out.println(this.receivingDescription());
-		// the receiver send an other letter to the sender.
+		// the receiver send thanks letter to the sender.
 		SimpleLetter thanksLetter = new ThanksLetter(new Text("Thank you for the money"),this.getReceiver(),this.getSender());
 		this.getReceiver().sendLetter(thanksLetter);
 	}
 	
+	/**
+	 * @return the cost of the letter
+	 */
 	@Override
 	public float cost() {
 		return 1 + this.getContent().getMoney()/100 ;
 	}
+	/**
+	 * @return the total money to decrease from the inhabitant BankAccount
+	 */
 	public float totalMoneyToDebit() {
 		return super.totalMoneyToDebit() + this.getContent().getMoney();
 	}
 	
+	/**
+	 * @return the letter description
+	 */
 	public String description() {
 		return super.description() + " of exchange";
 	}

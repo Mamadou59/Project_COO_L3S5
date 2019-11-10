@@ -22,6 +22,9 @@ public class Money implements Content {
 		return money;
 	}
 	
+	/**
+	 * @return the description of the money content
+	 */
 	public String description() {
 		return new String("[value = "+this.getMoney()+" euros]");
 	}

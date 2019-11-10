@@ -14,7 +14,6 @@ import courriers.inhabitant.Inhabitant;
 public class SimpleLetter extends Letter<Text> {
 	
 	
-	
 	protected float COST = 0.5F;
 
 	
@@ -22,11 +21,17 @@ public class SimpleLetter extends Letter<Text> {
 		super(content,sender, receiver);
 	}
 	
+	/**
+	 * the action to do when the letter is receiving by the inhabitant
+	 */
 	@Override
 	public void action() {
 		System.out.println(this.receivingDescription());
 	}
 
+	/**
+	 * @return the cost of the letter
+	 */
 	@Override
 	public float cost() {
 		return COST;

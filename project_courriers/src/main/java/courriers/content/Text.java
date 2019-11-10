@@ -20,6 +20,9 @@ public class Text implements Content {
 	public String getText() {
 		return text;
 	}
+	/**
+	 * @return the description of the text content
+	 */
 	
 	public String description() {
 		return new String("["+this.getText()+"]");

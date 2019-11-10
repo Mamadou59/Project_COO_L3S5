@@ -21,6 +21,9 @@ public class ThanksLetter extends SimpleLetter {
 		super(content, sender, receiver);
 	}
 	
+	/**
+	 * @return the description of the letter
+	 */
 	public String description() {
 		return super.description() + " of thanks ";
 	}

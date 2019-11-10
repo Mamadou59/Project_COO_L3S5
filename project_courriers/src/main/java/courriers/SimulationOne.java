@@ -16,7 +16,7 @@ import courriers.letters.*;
 public class SimulationOne {
 	
 //	public static final int NB_DAY = 4;
-	public static final int NB_NEW_LETTER_FOR_DAY = 4;
+	//public static final int NB_NEW_LETTER_FOR_DAY = 4;
 	public static final int NB_INHABITANT = 100;
 	
 	
@@ -28,8 +28,7 @@ public class SimulationOne {
 		BankAccount b;
 		Inhabitant inhab;
 		for (int i = 0; i < NB_INHABITANT; i++) {
-			b = new BankAccount();
-			b.credit(500);
+			b = new BankAccount(500);
 			inhab = new Inhabitant("inhab"+i,this.theCity,b);
 			this.theCity.addInhabitant(inhab);
 		}
