@@ -30,32 +30,6 @@
   <build>
     <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
       <plugins>
-      	<!-- javadoc -->
-	
-			<!--<plugin>
-			   <groupId>org.apache.maven.plugins</groupId>
-			   <artifactId>maven-javadoc-plugin</artifactId>
-			   <version>2.10.4</version>
-			   <configuration>
-			     <reportOutputDirectory>${project.build.directory}/docs</reportOutputDirectory>
-			     <destDir>docs</destDir>
-			     <nohelp>true</nohelp>
-			   </configuration>
-			</plugin>-->
-	
-	<!-- second plugin qui marche sur nos machines mais pas sur celles de l'université -->
-		
-		<plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-javadoc-plugin</artifactId>
-            <version>3.0.1</version>
-            <configuration>
-              <javadocExecutable>${java.home}/bin/javadoc</javadocExecutable>
-            </configuration>
-         </plugin>
-	
-      
-      
         <!-- clean lifecycle, see https://maven.apache.org/ref/current/maven-core/lifecycles.html#clean_Lifecycle -->
         <plugin>
           <artifactId>maven-clean-plugin</artifactId>
@@ -77,13 +51,6 @@
         <plugin>
           <artifactId>maven-jar-plugin</artifactId>
           <version>3.0.2</version>
-          <configuration>
-	     	<archive>
-				<manifest>
-					<mainClass>questionnaires.Main</mainClass>
-				</manifest>
-	     	</archive>
-	  	</configuration>
         </plugin>
         <plugin>
           <artifactId>maven-install-plugin</artifactId>

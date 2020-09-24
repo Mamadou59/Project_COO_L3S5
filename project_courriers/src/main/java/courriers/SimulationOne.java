@@ -28,7 +28,8 @@ public class SimulationOne {
 		BankAccount b;
 		Inhabitant inhab;
 		for (int i = 0; i < NB_INHABITANT; i++) {
-			b = new BankAccount(500);
+			b = new BankAccount();
+			b.credit(500);
 			inhab = new Inhabitant("inhab"+i,this.theCity,b);
 			this.theCity.addInhabitant(inhab);
 		}

@@ -6,82 +6,66 @@ package questionnaires;
 import java.util.ArrayList;
 import java.util.List;
 
+import questionnaires.display.TextInterface;
 import questionnaires.question.Question;
-import questionnaires.scanner.ScannerString;
 
 /**
  * @author diallo and fungwa
  *
  */
-public class Questionnaire {
-	
-	private List<Question> questions;
-	private int score;
+public class Questionnaire  extends AbstractQuestionnaire{
 	
 	public Questionnaire(){
 		this.questions = new ArrayList<Question>();
 		this.score = 0;
+		this.interfaceDisplayer = TextInterface.INTERFACE;
 	}
+	/**
+	 * Constructor with a list of questions.
+	 * @param questions the list of questions
+	 */
 	public Questionnaire(List<Question> questions){
-		this.questions = new ArrayList<Question>(questions);
-		this.score = 0;
+		this();
+		this.questions.addAll(questions);
 	}
 	
-	public void addQuestion(Question q) {
-		this.questions.add(q);
-	}
-	/**
-	 * @return the questions
-	 */
-	public List<Question> getQuestions() {
-		return questions;
-	}
-
-	/**
-	 * @return the score
-	 */
-	public int getScore() {
-		return score;
-	}
-	
+	@Override
 	public void askAll() {
+		this.interfaceDisplayer.displayStart(this);
 		for(Question q: this.questions) {
 			this.askOne(q);
 		}
-		this.displayScore();
+		this.interfaceDisplayer.displayScore(this.score);
 	}
 
-	private void displayScore() {
-		System.out.println(this.score);
-		
-	}
-
-	private void askOne(Question q) {
-		this.displayQuestionText(q);
+	/**
+	 * ask one question and check the answer.
+	 * @param q the question to ask
+	 */
+	public void askOne(Question q) {
+		this.interfaceDisplayer.displayQuestionText(q);
 		boolean essaie = false;
 		String input = "";
 		while(!essaie) {
-			System.out.print(q.getAnswer().getType()+" -> ");
-			input = ScannerString.INSTANCE.readString();
+			this.interfaceDisplayer.displayType(q);
+			input = this.interfaceDisplayer.getInput();
 			essaie = q.getAnswer().checkType(input);
 		}
 		checkUserAnswer(q, input);
 	}
+	
 	/**
+	 * check the answer
 	 * @param q the question
 	 * @param input the answer of user
 	 */
 	private void checkUserAnswer(Question q, String input) {
 		if(q.checkAnswer(input)) {
 			this.score += q.getPoint();
-			System.out.println("correct ("+q.getPoint()+" points)");
+			this.interfaceDisplayer.displayCorrectAnswer(q);
 		}else {
-			System.out.println("incorrect, the good answer is : "+q.getAnswer().getGoodAnswer());
+			this.interfaceDisplayer.displayIncorrectAnswer(q);
 		}
 	}
-
-	private void displayQuestionText(Question q) {
-		System.out.println(q.toString());
-		
-	}
+	
 }

@@ -9,17 +9,17 @@ By default value are read from System.in but InputStream can be changed.
 ScannerInt implements Singleton design pattern
 
 */
-public class ScannerString {
+public class ScannerString implements ScannerInterface {
 	
     private Scanner scanner;
 
     /** to ensure the singleton, default input stream is System.in  */
     private ScannerString() {
-	this.setInToSystemIn();
+    	this.setInToSystemIn();
     }
 
     /** SINGLETON instance */
-    public static final ScannerString INSTANCE = new ScannerString();
+    public static final ScannerInterface INSTANCE = new ScannerString();
 
     /** change the used input stream  
      @param in the new used InputStream
@@ -29,21 +29,16 @@ public class ScannerString {
      }
     /** set the used InputStream to System.in*/
     public void setInToSystemIn() {
-	this.setIn(System.in);
+    	this.setIn(System.in);
     }
 	
 	/**
-	 * reads an integer between 1 and n, input is repeated until provided value is correct
-	 * 
-	 * @param n upper bound
+	 * reads a string
 	 * @return input value
 	 */
 	public String readString() {
 		String input;
 		input = scanner.nextLine();
-		//System.out.print(" ");
-		// consume the input (that is not an integer)
-		//scanner.skip(".*");
 		return input;
 	}
 }

@@ -3,6 +3,7 @@
  */
 package questionnaires.question;
 
+
 import questionnaires.answers.Answers;
 
 /**
@@ -35,6 +36,11 @@ public class Question {
 		return point;
 	}
 	
+	/**
+	 * check the user answer.
+	 * @param answer the answer to check
+	 * @return <em>true</em> if the answer is correct and <em>false</em> if not
+	 */
 	public boolean checkAnswer(String answer){
 		return this.goodAnswer.checkAnswer(answer);
 	}
@@ -42,6 +48,8 @@ public class Question {
 	public String toString() {
 		return this.content;
 	}
+	
+	
 	
 	
 }
