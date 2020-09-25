@@ -1,0 +1,40 @@
+CC      = gcc
+
+CFLAGS  = -Wall -Wextra
+CFLAGS += -g
+CFLAGS += -pthread
+
+LDFLAGS = -pthread
+
+TOUS := aleazard compteur-gc tri-rapide compteur-gc1
+
+tout: ${TOUS}
+
+tri-rapide: pile.o tri.o rapide.o main.o
+	${CC} ${LDFLAGS} -o $@ $^
+
+%.o: %.c
+	${CC} ${CFLAGS} -c $<
+
+%: %.o
+	${CC} ${LDFLAGS} -o $@ $^
+
+%: %.c
+
+# Configure des cibles pour l’intégration continue
+compteur-gc-ci: CFLAGS+=-Werror
+compteur-gc-ci: compteur-gc
+
+tri-rapide-ci: CFLAGS+=-Werror
+tri-rapide-ci: tri-rapide
+
+test:
+	./test.sh
+clean:
+	@rm -f core *.o *.txt *.dat 
+
+
+realclean: clean
+	@rm -f ${TOUS}
+
+.PHONY: all clean realclean
